@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Save the Ghast</title>
+        <style>
+            #Water:hover
+            {
+                transform: translateY(5px);
+                transition-duration: 100ms;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="BG.png" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 0;">
+        <img id="Ghast" src="Sad.png" style="position: fixed; bottom: 15%; left: 50%; transform: translate(-50%, 0%); z-index: 2;">
+        <img id="Water" src="Water Bucket.webp" style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, 0%); z-index: 1;">
+        <img id="Pickaxe" src="Pickaxe.webp" style="position: fixed; top: 0px; right: 0px;">
+        <script>
+            const Ghast = document.getElementById("Ghast");
+            const Water = document.getElementById("Water");
+            const Pickaxe = document.getElementById("Pickaxe");
+            let dead = false;
+            Water.addEventListener("mouseover", () => {
+                if(!dead) {    
+                    Ghast.src = "Happy.webp";
+                    Water.src = "Flowing_Water_Bucket-removebg-preview.png";
+                }
+            });
+            Water.addEventListener("mouseout", () => {
+                if(!dead) {
+                    Ghast.src = "Sad.png";
+                    Water.src = "Water BUcket.webp";
+                }
+            });
+            Pickaxe.addEventListener("click", () => 
+            {
+                dead = true;
+            });
+            Pickaxe.addEventListener("mouseout", () => {
+                if(dead) {
+                    Ghast.src = "dead.webp";
+                    alert("...");
+                }
+            });
+        </script>
+    </body>
+</html>
